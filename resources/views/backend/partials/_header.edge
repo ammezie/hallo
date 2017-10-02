@@ -12,6 +12,9 @@
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+        <a class="nav-link" href="{{ route('viewSite') }}" title="View Site"><i class="icon-globe"></i></a>
+    </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         <span class="d-md-down-none">
@@ -19,7 +22,7 @@
         </span>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('myProfile')  }}">
           <i class="icon-user"></i> My Profile
         </a>
          <div class="divider"></div>

@@ -9,6 +9,7 @@ class TokensSchema extends Schema {
       table.integer('user_id').unsigned().references('id').inTable('users')
       table.string('token', 40).notNullable().unique()
       table.boolean('is_revoked').defaultTo(false)
+      table.string('type')
       table.timestamps()
     })
   }

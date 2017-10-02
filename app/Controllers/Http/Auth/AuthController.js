@@ -7,7 +7,7 @@ class AuthController {
    *
    * @param {View} view
    */
-  showLogin ({ view }) {
+  showLoginForm ({ view }) {
     return view.render('backend.auth.login')
   }
 
@@ -17,10 +17,10 @@ class AuthController {
    * @param {} param0
    */
   async login ({ request, auth, session, response}) {
-    const { email, password } = request.all()
+    const { email, password, remember } = request.all()
 
     try {
-      await auth.attempt(email, password)
+      await auth.remember(!! remember).attempt(email, password)
     } catch (error) {
       session.flash({ error: 'Invalid email/password' })
 

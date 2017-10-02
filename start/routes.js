@@ -16,7 +16,7 @@
 const Route = use('Route')
 
 // Auth
-Route.get('login', 'Auth/AuthController.showLogin')
+Route.get('login', 'Auth/AuthController.showLoginForm').middleware(['authenticated'])
 Route.post('login', 'Auth/AuthController.login').as('login')
 Route.get('logout', 'Auth/AuthController.logout').as('logout')
 
