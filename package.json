@@ -31,12 +31,18 @@
     "@adonisjs/lucid": "^4.0.16",
     "@adonisjs/session": "^1.0.12",
     "@adonisjs/shield": "^1.0.2",
+    "@adonisjs/validator": "^4.0.5",
     "mysql": "^2.14.1"
   },
   "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "coreui.io": "^1.0.0-alpha.6",
     "cross-env": "^5.0.5",
+    "jquery": "^3.2.1",
     "laravel-mix": "^1.4.5",
-    "standard": "^10.0.3"
+    "pace-js": "^1.0.2",
+    "standard": "^10.0.3",
+    "tether": "^1.4.0"
   },
   "standard": {
     "globals": [

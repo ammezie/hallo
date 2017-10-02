@@ -1,0 +1,47 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    @!section('title')
+
+    {{ css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
+    {{ css('https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css') }}
+
+    {{ css('css/app') }}
+</head>
+
+<body class="app header-fixed sidebar-fixed">
+    @include('backend.partials._header')
+
+    <div class="app-body">
+      @include('backend.partials._sidebar')
+
+      <main class="main">
+        @include('backend.partials._breadcrumb')
+
+        <div class="container-fluid">
+          @!section('content')
+        </div>
+      </main>
+    </div>
+
+    @include('backend.partials._footer')
+
+    {{ script('js/vendor')  }}
+    {{ script('js/app')  }}
+</body>
+</html>

@@ -15,4 +15,18 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+// Auth
+Route.get('login', 'Auth/AuthController.showLogin')
+Route.post('login', 'Auth/AuthController.login').as('login')
+Route.get('logout', 'Auth/AuthController.logout').as('logout')
+
+// Admin-ish
+Route
+  .group(() => {
+    // Dashboard
+    Route.get('/', 'DashboardController.index').as('admin')
+  })
+  .prefix('admin')
+  .middleware(['auth'])
+
+Route.on('/').render('backend.auth.register')
