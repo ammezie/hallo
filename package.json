@@ -35,12 +35,14 @@
     "mysql": "^2.14.1"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^4.0.0-beta",
     "coreui.io": "^1.0.0-alpha.6",
     "cross-env": "^5.0.5",
     "jquery": "^3.2.1",
     "laravel-mix": "^1.4.5",
+    "pace": "0.0.4",
     "pace-js": "^1.0.2",
+    "popper.js": "^1.12.5",
     "standard": "^10.0.3",
     "tether": "^1.4.0"
   },

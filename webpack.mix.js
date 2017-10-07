@@ -15,14 +15,5 @@ let { mix } = require('laravel-mix');
 
 mix
   .setPublicPath('public')
-
-  .js('node_modules/coreui.io/Static_Starter_GULP/js/app.js', 'public/js')
-
-  .scripts([
-    'node_modules/jquery/dist/jquery.min.js',
-    'node_modules/tether/dist/js/tether.min.js',
-    'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    'node_modules/pace-js/pace.min.js'
-  ], 'public/js/vendor.js')
-
+  .js('resources/assets/js/app.js', 'public/js')
   .sass('resources/assets/sass/app.scss', 'public/css')

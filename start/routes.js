@@ -25,6 +25,8 @@ Route
   .group(() => {
     // Dashboard
     Route.get('/', 'DashboardController.index').as('admin')
+    Route.get('profile', 'UserController.profile').as('myProfile')
+    Route.post('profile', 'UserController.updateProfile').as('updateProfile')
   })
   .prefix('admin')
   .middleware(['auth'])

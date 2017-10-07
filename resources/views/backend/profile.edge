@@ -1,0 +1,72 @@
+@layout('backend.layouts.app')
+
+@section('title')
+  <title>My Personal Blog | Profile</title>
+@endsection
+
+@section('content')
+  <div class="row">
+    @include('backend.partials.flash._notification')
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          Edit Profile
+        </div>
+
+        <div class="card-block">
+          <form action="{{ route('updateProfile') }}" method="POST">
+            {{ csrfField() }}
+
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" class="form-control {{ hasErrorFor('fname') ? 'is-invalid' : '' }}" name="fname" id="fname" value="{{ old('fname', auth.user.fname)  }}" placeholder="First name">
+              {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('fname'), hasErrorFor('fname')) }}
+            </div>
+
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-control" name="lname" value="{{ old('lname', auth.user.lname)  }}" placeholder="Last name">
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" value="{{ old('email', auth.user.email)  }}" placeholder="Email address">
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          Change Password
+        </div>
+
+        <div class="card-block">
+          <form action="{{ route('changePassword') }}" method="POST">
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password" class="form-control" name="fname" placeholder="Current Password">
+            </div>
+
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" class="form-control" name="lname" placeholder="New Password">
+            </div>
+
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" class="form-control" name="email" placeholder="Confrim New Password">
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
