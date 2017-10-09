@@ -5036,6 +5036,14 @@ module.exports = __webpack_require__(43);
 __webpack_require__(19);
 __webpack_require__(42);
 
+var simplemde = new SimpleMDE({
+  element: document.querySelector('#content'),
+  autosave: {
+    enabled: true,
+    uniqueId: 'PostContent'
+  }
+});
+
 /***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
