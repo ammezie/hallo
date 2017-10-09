@@ -32,7 +32,8 @@
     "@adonisjs/session": "^1.0.12",
     "@adonisjs/shield": "^1.0.2",
     "@adonisjs/validator": "^4.0.5",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "url-slug": "^2.0.0"
   },
   "devDependencies": {
     "bootstrap": "^4.0.0-beta",
@@ -43,6 +44,7 @@
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
     "popper.js": "^1.12.5",
+    "simplemde": "^1.11.2",
     "standard": "^10.0.3",
     "tether": "^1.4.0"
   },

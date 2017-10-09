@@ -14441,3 +14441,12 @@ hr.transparent {
   border-right-color: #4dbd74;
 }
 
+.badge-secondary {
+  color: #fff;
+  background-color: #868e96;
+}
+
+a.no-underline {
+  text-decoration: none;
+}
+

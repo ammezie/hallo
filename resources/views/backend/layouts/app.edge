@@ -21,6 +21,7 @@
     {{ css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
     {{ css('https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css') }}
     {{ css('https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css') }}
+    {{ css('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css') }}
 
     {{ css('css/app') }}
 </head>
@@ -35,6 +36,8 @@
         @include('backend.partials._breadcrumb')
 
         <div class="container-fluid">
+          @include('backend.partials.flash._notification')
+
           @!section('content')
         </div>
       </main>
@@ -44,5 +47,6 @@
 
     {{ script('https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js' )}}
     {{ script('js/app') }}
+    {{ script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js') }}
 </body>
 </html>

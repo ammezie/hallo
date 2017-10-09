@@ -6,7 +6,7 @@ class TagSchema extends Schema {
   up () {
     this.create('tags', (table) => {
       table.increments()
-      table.string('name')
+      table.string('name').notNullable()
       table.string('slug').unique()
       table.text('description').nullable()
       table.timestamps()

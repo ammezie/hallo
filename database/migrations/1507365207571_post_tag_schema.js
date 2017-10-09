@@ -4,7 +4,7 @@ const Schema = use('Schema')
 
 class PostTagSchema extends Schema {
   up () {
-    this.create('post_tags', (table) => {
+    this.create('post_tag', (table) => {
       table.increments()
       table.integer('post_id').unsigned()
       table.integer('tag_id').unsigned()
@@ -13,7 +13,7 @@ class PostTagSchema extends Schema {
   }
 
   down () {
-    this.drop('post_tags')
+    this.drop('post_tag')
   }
 }
 

@@ -1,0 +1,77 @@
+@layout('backend.layouts.app')
+
+@section('title')
+  <title>My Personal Blog | New Post</title>
+@endsection
+
+@section('content')
+  <form action="{{ route('posts.store') }}" method="POST">
+    {{ csrfField() }}
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            New Post
+          </div>
+
+          <div class="card-block">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" name="title" class="form-control" placeholder="Give your post a title">
+            </div>
+
+            <div class="form-group">
+              <textarea name="content" class="form-control" id="content" placeholder="...and get creative"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            Tags
+          </div>
+
+          <div class="card-block">
+            <select class="selectpicker form-control" name="tags[]" multiple>
+              @each(tag in tags)
+                <option value="{{ tag.id }}">{{ tag.name }}</option>
+              @endeach
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            SEO
+          </div>
+
+          <div class="card-block">
+            <div class="form-group">
+              <textarea class="form-control" name="meta_description" rows="5" placeholder="Meta description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Publishing
+          </div>
+
+          <div class="card-block">
+            <div class="form-group">
+              <label>Status</label>
+              <select class="form-control" name="status">
+                <option value="1">Published</option>
+                <option value="0">Draft</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+@endsection

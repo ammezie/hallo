@@ -6,10 +6,10 @@ class PostSchema extends Schema {
   up () {
     this.create('posts', (table) => {
       table.increments()
-      table.integer('author_id').unique()
-      table.string('title')
+      table.integer('user_id').unsigned().notNullable()
+      table.string('title').notNullable()
       table.string('slug').unique()
-      table.text('content')
+      table.text('content').notNullable()
       table.boolean('status').defaultTo(0)
       table.text('meta_description').nullable()
       table.timestamps()
