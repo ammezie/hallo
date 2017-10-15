@@ -33,7 +33,11 @@
                   <td>{{ tag.name }}</td>
                   <td>{{ tag.slug }}</td>
                   <td>{{ tag.description }}</td>
-                  <td>Edit</td>
+                  <td>
+                    <a href="{{ route('tags.edit', { id: tag.id }) }}">
+                      <i class="icon-note"></i>
+                    </a>
+                  </td>
                   <td>Delete</td>
                 </tr>
 

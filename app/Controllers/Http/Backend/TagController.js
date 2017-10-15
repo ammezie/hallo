@@ -2,6 +2,7 @@
 
 const Tag = use('App/Models/Tag')
 const urlSlug = require('url-slug')
+const { validate } = use('Validator')
 
 class TagController {
   /**
@@ -31,6 +32,17 @@ class TagController {
    */
   async store ({ request, auth, session, response }) {
     // TODO: validate form input
+    const validation = await validate(request.all(), {
+        title: 'required'
+    })
+
+    // show error messages upon validation fail
+    if (validation.fails()) {
+        session.withErrors(validation.messages())
+                .flashAll()
+
+        return response.redirect('back')
+    }
 
     const tag = new Tag()
 
@@ -48,7 +60,7 @@ class TagController {
   /**
    * Display a single tag
    *
-   * @param {*
+   * @param
    */
   async show ({ request, view }) {
 
@@ -61,7 +73,9 @@ class TagController {
    * @param {*}
    */
   async edit ({ params, view }) {
-    return view.render('backend.tags.edit')
+    const tag = await Tag.find(params.id)
+
+    return view.render('backend.tags.edit', { tag: tag.toJSON() })
   }
 
   /**
@@ -69,8 +83,18 @@ class TagController {
    *
    * @param {*}
    */
-  async update ({ request, auth, session, response }) {
-    return response.redirect('tags.index')
+  async update ({ request, params, auth, session, response }) {
+    const tag = await Tag.find(params.id)
+
+    tag.name = request.input('name')
+    tag.slug = urlSlug(request.input('name'))
+    tag.description = request.input('description')
+
+    await tag.save()
+
+    session.flash({ notification: 'Tag updated!' })
+
+    return response.route('tags.index')
   }
   /**
    * Delete a specified tag

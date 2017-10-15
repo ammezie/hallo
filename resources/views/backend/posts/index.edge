@@ -27,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              @each(post in posts)
+              @each(post in posts.data)
                 <tr>
                   <td>{{ $loop.index + 1 }}</td>
                   <td>{{ post.title }}</td>

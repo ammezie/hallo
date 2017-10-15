@@ -10,10 +10,13 @@ class PostController {
    *
    * @param {view}
    */
-  async index ({ view }) {
+  async index ({ request, view }) {
+    // Get the current page from query string
+    const page = Number(request.input('page', 1))
+
     const posts = await Post.query()
                             .orderBy('id', 'desc')
-                            .fetch()
+                            .paginate(page, 2)
 
     return view.render('backend.posts.index', { posts: posts.toJSON() })
   }
