@@ -39,7 +39,11 @@
                     @endif
                   </td>
                   <td>{{ post.created_at }}</td>
-                  <td>Edit</td>
+                  <td>
+                    <a href="{{ route('posts.edit', { id: post.id }) }}">
+                      <i class="icon-note"></i>
+                    </a>
+                  </td>
                   <td>Delete</td>
                 </tr>
 

@@ -5037,11 +5037,11 @@ __webpack_require__(19);
 __webpack_require__(42);
 
 var simplemde = new SimpleMDE({
-  element: document.querySelector('#content'),
-  autosave: {
-    enabled: true,
-    uniqueId: 'PostContent'
-  }
+  element: document.querySelector('#content')
+  // autosave: {
+  //   enabled: true,
+  //   uniqueId: 'PostContent'
+  // }
 });
 
 /***/ }),

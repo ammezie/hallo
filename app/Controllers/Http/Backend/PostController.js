@@ -16,7 +16,7 @@ class PostController {
 
     const posts = await Post.query()
                             .orderBy('id', 'desc')
-                            .paginate(page, 2)
+                            .paginate(page, 25)
 
     return view.render('backend.posts.index', { posts: posts.toJSON() })
   }
@@ -52,8 +52,8 @@ class PostController {
     const post = await Post.create(postData)
 
     // Attach tags to post
-    await post.tags()
-              .attach(request.input('tags'))
+    const tags = request.input('tags').map((tag) => Number(tag))
+    await post.tags().attach(tags)
 
     session.flash({ notification: 'Post added!' })
 
@@ -76,7 +76,11 @@ class PostController {
    * @param {*}
    */
   async edit ({ params, view }) {
-    return view.render('backend.posts.edit')
+    const post = await Post.find(params.id)
+    const tags = await Tag.pair('id', 'name')
+    const postTags = await post.tags().pair('id', 'name')
+
+    return view.render('backend.posts.edit', { post: post.toJSON(), tags, postTags })
   }
 
   /**
@@ -84,8 +88,28 @@ class PostController {
    *
    * @param {*}
    */
-  async update ({ request, auth, session, response }) {
-    return response.redirect('posts.index')
+  async update ({ request, params, auth, session, response }) {
+    const post = await Post.find(params.id)
+
+    // TODO: validate form inputs
+
+    post.title = request.input('title')
+    post.slug = urlSlug(request.input('title'))
+    post.content = request.input('content')
+    post.meta_description = request.input('meta_description')
+    post.status = request.input('status')
+
+    await post.save()
+
+    // Update post tags
+    const tags = request.input('tags').map((tag) => Number(tag))
+
+    await post.tags().detach()
+    await post.tags().attach(tags)
+
+    session.flash({ notification: 'Post updated!' })
+
+    return response.route('posts.index')
   }
   /**
    * Delete a specified post

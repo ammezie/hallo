@@ -8,6 +8,7 @@ class Tag extends Model {
    */
   posts () {
     return this.belongsToMany('App/Models/Post')
+                .withTimestamps()
   }
 }
 
