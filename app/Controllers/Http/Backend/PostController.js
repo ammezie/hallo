@@ -2,7 +2,7 @@
 
 const Post = use('App/Models/Post')
 const Tag = use('App/Models/Tag')
-const urlSlug = require('url-slug')
+const slugify = require('slugify')
 
 class PostController {
   /**
@@ -43,7 +43,7 @@ class PostController {
     const postData = {
       user_id: auth.user.id,
       title: request.input('title'),
-      slug: urlSlug(request.input('title')),
+      slug: slugify(request.input('title'), { lower: true }),
       content: request.input('content'),
       meta_description: request.input('meta_description'),
       status: request.input('status')
@@ -94,7 +94,7 @@ class PostController {
     // TODO: validate form inputs
 
     post.title = request.input('title')
-    post.slug = urlSlug(request.input('title'))
+    post.slug = slugify(request.input('title'), { lower: true }),
     post.content = request.input('content')
     post.meta_description = request.input('meta_description')
     post.status = request.input('status')

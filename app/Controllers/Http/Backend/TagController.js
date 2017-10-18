@@ -1,7 +1,7 @@
 'use strict'
 
 const Tag = use('App/Models/Tag')
-const urlSlug = require('url-slug')
+const slugify = require('slugify')
 const { validate } = use('Validator')
 
 class TagController {
@@ -47,7 +47,7 @@ class TagController {
     const tag = new Tag()
 
     tag.name = request.input('name')
-    tag.slug = urlSlug(request.input('name'))
+    tag.slug = slugify(request.input('name'), { lower: true })
     tag.description = request.input('description')
 
     await tag.save()
@@ -87,7 +87,7 @@ class TagController {
     const tag = await Tag.find(params.id)
 
     tag.name = request.input('name')
-    tag.slug = urlSlug(request.input('name'))
+    tag.slug = slugify(request.input('name'), { lower: true })
     tag.description = request.input('description')
 
     await tag.save()

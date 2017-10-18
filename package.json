@@ -33,7 +33,7 @@
     "@adonisjs/shield": "^1.0.2",
     "@adonisjs/validator": "^4.0.5",
     "mysql": "^2.14.1",
-    "url-slug": "^2.0.0"
+    "slugify": "^1.2.1"
   },
   "devDependencies": {
     "bootstrap": "^4.0.0-beta",
