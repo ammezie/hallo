@@ -30,7 +30,7 @@ Route
     Route.post('profile', 'Backend/UserController.updateProfile').as('updateProfile')
 
     // Posts
-    Route.resource('posts', 'Backend/PostController')
+    Route.resource('/posts', 'Backend/PostController')
 
     // Tags
     Route.resource('tags', 'Backend/TagController')
